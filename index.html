@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pixel Miner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Sky header -->
+  <header id="sky">
+    <div class="sky-tint"></div>
+    <div class="topbar">
+      <div class="brand">Pixel Miner</div>
+      <div class="stats">
+        <span id="depth">Depth: 0m</span>
+        <span id="money">£0</span>
+      </div>
+      <div class="actions">
+        <button id="surfaceBtn" class="btn">Surface</button>
+        <button id="shopBtn" class="btn">Shop</button>
+        <button id="pediaBtn" class="icon-btn" title="Mineral-pedia">
+          <img
+            src="https://icons.iconarchive.com/icons/paomedia/small-n-flat/256/book-bookmark-icon.png"
+            alt="pedia"
+          />
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mine -->
+  <main id="mine" aria-label="Mining area"></main>
+
+  <!-- Cursor GIF (hidden by default) -->
+  <img
+    id="cursorGif"
+    alt=""
+    src="https://media3.giphy.com/media/v1.Y2lkPTZjMDliOTUyd3djZGx5azNwMnFvNzBhazR4dzdyYTdjbG93YW1tenJrbnBsNGx4bSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/A7VmRVZ1g5qxEthBX3/source.gif"
+  />
+
+  <!-- Pedia Modal -->
+  <div id="pediaModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Mineral-pedia</h2>
+        <button class="close" data-close="pedia">✕</button>
+      </div>
+      <div class="modal-body">
+        <table id="pediaTable">
+          <thead>
+            <tr>
+              <th>Material</th>
+              <th>Base Sell</th>
+              <th>Rarity</th>
+              <th>Depth Bias</th>
+            </tr>
+          </thead>
+          <tbody><!-- filled by JS --></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shop Modal -->
+  <div id="shopModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Shop</h2>
+        <button class="close" data-close="shop">✕</button>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="upgrades">Upgrades</button>
+        <button class="tab" data-tab="boosts">Boosts</button>
+        <button class="tab" data-tab="skins">Skins</button>
+      </div>
+
+      <!-- Global 15-segment progress for upgrades -->
+      <div class="progress-wrap">
+        <div class="progress-label">Upgrade Milestones</div>
+        <div id="upgradeProgress" class="segments"></div>
+      </div>
+
+      <div class="modal-body">
+        <section class="tab-panel" id="tab-upgrades">
+          <div class="grid" id="upgradeList"><!-- filled by JS --></div>
+          <div id="advancedUpgrades" class="advanced card hidden">
+            <h3>Advanced Upgrades (Unlocked)</h3>
+            <p>Boosts crit chance, crit damage, pickaxe damage/speed, and more.</p>
+            <button id="buyAdvanced" class="btn">Buy (+2% Crit, +25% Crit Dmg, +5% Dmg, +5% Speed) — £15,000</button>
+          </div>
+        </section>
+
+        <section class="tab-panel hidden" id="tab-boosts">
+          <div class="grid" id="boostList"><!-- filled by JS --></div>
+        </section>
+
+        <section class="tab-panel hidden" id="tab-skins">
+          <div class="grid" id="skinList"><!-- filled by JS --></div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio -->
+  <audio id="mineSound" src="MineSound.mp3" preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
